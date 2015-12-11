@@ -1,0 +1,82 @@
+package org.usfirst.frc.team20.robot;
+
+import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CANTalon.ControlMode;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+
+/**
+ * The VM is configured to automatically run this class, and to call the
+ * functions corresponding to each mode, as described in the IterativeRobot
+ * documentation. If you change the name of this class or the package after
+ * creating this project, you must also update the manifest file in the resource
+ * directory.
+ */
+public class RobotCindy extends IterativeRobot {
+    /**
+     * This function is run when the robot is first started up and should be
+     * used for any initialization code.
+     */ 
+	CANTalon frontright = new CANTalon (2);
+	CANTalon frontleft = new CANTalon (1);
+	CANTalon backright = new CANTalon (9);
+	CANTalon backleft = new CANTalon (10);
+	CANTalon forks = new CANTalon (5);
+	CANTalon masterelevator = new CANTalon (7);
+	CANTalon slave1 = new CANTalon(4);
+	CANTalon slave2 = new CANTalon(3);
+	CANTalon slave3 = new CANTalon(8);
+	
+	Joystick driver = new Joystick (0);
+	Joystick operator = new Joystick (1);
+	
+    public void robotInit() {
+    	slave1.changeControlMode(ControlMode.Follower);
+    	slave2.changeControlMode(ControlMode.Follower);
+    	slave3.changeControlMode(ControlMode.Follower);
+    	
+    	
+    	
+
+    }
+
+    /**
+     * This function is called periodically during autonomous
+     */
+    public void autonomousPeriodic() {
+
+    }
+
+    /**
+     * This function is called periodically during operator control
+     */
+    public void teleopPeriodic() {
+    	double speed = driver.getRawAxis(1);
+    	double turn = driver.getRawAxis(4);
+    	double strafe = driver.getRawAxis(0);
+    	double forks1 = operator.getRawAxis(0);
+    	double mastelev = operator.getRawAxis(5)*.5;
+    	
+    	masterelevator.set(mastelev);
+    	slave1.set(7);
+    	slave2.set(7);
+    	slave3.set(7);
+    	
+    	frontleft.set (-(speed-turn+strafe));
+    	frontright.set (speed+turn-strafe);
+    	backleft.set (-(speed-turn-strafe));
+    	backright.set((speed+turn+strafe));
+    	forks.set(forks1);
+    	
+    	
+        
+    }
+    
+    /**
+     * This function is called periodically during test mode
+     */
+    public void testPeriodic() {
+    
+    }
+    
+}
