@@ -1,0 +1,10 @@
+package org.usfirst.frc.team20.robot;
+
+public class Wheels {
+	Motors mc = new Motors();
+	DriverOperator dop = new DriverOperator();
+	mc.frontleft.set (-(dop.speed-dop.turn+dop.strafe));
+	mc.frontright.set (dop.speed+dop.turn-dop.strafe);
+	mc.backleft.set (-(dop.speed-dop.turn-dop.strafe));
+	mc.backright.set((dop.speed+dop.turn+dop.strafe));
+}
