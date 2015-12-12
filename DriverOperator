@@ -1,0 +1,18 @@
+package org.usfirst.frc.team20.robot;
+
+public class DriverOperator {
+	Joysticks joy = new Joysticks();
+	public double mastelev, forks1,speed,turn,strafe;
+	
+	public void drivercommands() {
+		 speed = joy.driver.getRawAxis(1);
+    	 turn = joy.driver.getRawAxis(4);
+    	strafe = joy.driver.getRawAxis(0);
+	}
+    public void operatorcommands(){
+    	forks1 = joy.operator.getRawAxis(0);
+    	mastelev = joy.operator.getRawAxis(5)*.5;
+    	
+    	
+	}
+}
