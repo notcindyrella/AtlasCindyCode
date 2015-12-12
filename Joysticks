@@ -1,0 +1,8 @@
+package org.usfirst.frc.team20.robot;
+
+import edu.wpi.first.wpilibj.Joystick;
+
+public class Joysticks {
+	Joystick driver = new Joystick (0);
+	Joystick operator = new Joystick (1);
+}
