@@ -1,0 +1,26 @@
+package org.usfirst.frc.team20.robot;
+
+import edu.wpi.first.wpilibj.CANTalon.ControlMode;
+
+public class Elevator {
+	
+	Motors mc = new Motors();
+	Joysticks joy = new Joysticks();
+	DriverOperator dop = new DriverOperator();
+	
+
+	public void controls(){
+	mc.slave1.changeControlMode(ControlMode.Follower);
+	mc.slave2.changeControlMode(ControlMode.Follower);
+	mc.slave3.changeControlMode(ControlMode.Follower);
+	}
+	public void elevator(){
+	mc.masterelevator.set(dop.mastelev);
+	mc.slave1.set(7);
+	mc.slave2.set(7);
+	mc.slave3.set(7);
+}
+	public void forks(){
+		mc.forks.set(dop.forks1);
+	}
+}
